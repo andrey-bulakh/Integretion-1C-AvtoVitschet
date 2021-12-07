@@ -1,0 +1,529 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:sch="http://purl.oclc.org/dsdl/schematron" xmlns:tns="http://openapi-rest.gnivc.ru/application_typeA" targetNamespace="http://openapi-rest.gnivc.ru/application_typeA"   elementFormDefault="qualified" attributeFormDefault="unqualified" version="0.9">
+	<xs:element name="Файл">
+		<xs:annotation>
+			<xs:documentation>Файл обмена</xs:documentation>
+		</xs:annotation>
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element name="ИдДок" minOccurs="1" maxOccurs="1">
+					<xs:annotation>
+						<xs:documentation>Идентификатор документа</xs:documentation>
+					</xs:annotation>
+					<xs:simpleType>
+						<xs:restriction base="xs:string">
+							<xs:pattern value="SOOBSCHTYPEA_([0-9]{10})_([1-2]{1}[0-9]{3})(0[1-9]{1}|1[0-2]{1})(0[1-9]|[1-2]{1}[0-9]{1}|3[0-1]{1})_[0-9a-fA-F]{32}"/>
+						</xs:restriction>
+					</xs:simpleType>
+				</xs:element>
+				<xs:element name="ВерсФорм" minOccurs="1" maxOccurs="1">
+					<xs:annotation>
+						<xs:documentation>Версия формата</xs:documentation>
+					</xs:annotation>
+					<xs:simpleType>
+						<xs:restriction base="xs:string">
+							<xs:minLength value="1"/>
+							<xs:maxLength value="5"/>
+							<xs:enumeration value="1.01"/>
+						</xs:restriction>
+					</xs:simpleType>
+				</xs:element>				
+				<xs:element name="Документ" minOccurs="1" maxOccurs="1">
+					<xs:annotation>
+						<xs:documentation>Состав и структура документа</xs:documentation>
+					</xs:annotation>
+					<xs:complexType>
+						<xs:sequence>
+							<xs:element name="КНД" minOccurs="1" maxOccurs="1">
+								<xs:annotation>
+									<xs:documentation>Код формы по КНД</xs:documentation>
+								</xs:annotation>
+								<xs:simpleType>
+									<xs:restriction base="xs:string">
+										<xs:length value="7"/>										
+										<xs:enumeration value="1184035"/>						
+									</xs:restriction>
+								</xs:simpleType>
+							</xs:element>
+							<xs:element name="ДатаСвед" type="ДатаТип" minOccurs="1" maxOccurs="1">
+								<xs:annotation>
+									<xs:documentation>Дата формирования сведений. Дата в формате ДД.ММ.ГГГГ</xs:documentation>								
+								</xs:annotation>
+							</xs:element>
+							<xs:element name="ВремяСвед" type="ВремяТип" minOccurs="1" maxOccurs="1">
+								<xs:annotation>
+									<xs:documentation>Время формирования сведений. Время в формате ЧЧ:ММ:СС</xs:documentation>								
+								</xs:annotation>
+							</xs:element>											
+							<xs:element name="НомерСвед" minOccurs="1" maxOccurs="1">
+								<xs:annotation>
+									<xs:documentation>Идентификатор сведений</xs:documentation>
+								</xs:annotation>
+								<xs:simpleType>
+									<xs:restriction base="xs:string">
+										<xs:pattern value="[1-9]{1}|[1-9]{1}[0-9]{1}|[1-9]{1}[0-9]{2}|[1-9]{1}[0-9]{3}|[1-9]{1}[0-9]{4}|[1-9]{1}[0-9]{5}|[1-9]{1}[0-9]{6}|[1-9]{1}[0-9]{7}|[1-9]{1}[0-9]{8}|[1-9]{1}[0-9]{9}"/>							
+									</xs:restriction>
+								</xs:simpleType>
+							</xs:element>						
+							<xs:element name="СвПрофУч" minOccurs="1" maxOccurs="1">
+								<xs:annotation>
+									<xs:documentation>Сведения о профессиональном участнике рынка ценных бумаг</xs:documentation>			
+								</xs:annotation>
+								<xs:complexType>
+									<xs:sequence>
+										<xs:element name="НаимПрофУч" minOccurs="1" maxOccurs="1">
+											<xs:annotation>
+												<xs:documentation>Полное наименование профессионального участника рынка ценных бумаг</xs:documentation>
+											</xs:annotation>
+											<xs:simpleType>
+												<xs:restriction base="xs:string">
+													<xs:minLength value="1"/>
+													<xs:maxLength value="1000"/>
+												</xs:restriction>
+											</xs:simpleType>
+										</xs:element>	
+										<xs:element name="ИННПрофУч" type="ИННЮЛТип" minOccurs="1" maxOccurs="1">
+											<xs:annotation>
+												<xs:documentation>ИНН профессионального участника рынка ценных бумаг</xs:documentation>
+											</xs:annotation>
+										</xs:element>
+										<xs:element name="КПППрофУч" type="КППТип" minOccurs="1" maxOccurs="1">
+											<xs:annotation>
+												<xs:documentation>КПП профессионального участника рынка ценных бумаг</xs:documentation>
+											</xs:annotation>
+										</xs:element>
+									</xs:sequence>
+								</xs:complexType>
+							</xs:element>
+							<xs:element name="СвОргПред" minOccurs="0" maxOccurs="1">
+								<xs:annotation>
+									<xs:documentation>Сведения об организации- уполномоченном представителе</xs:documentation>			
+								</xs:annotation>
+								<xs:complexType>	
+									<xs:sequence>								
+										<xs:element name="НаимОргПРед" minOccurs="1" maxOccurs="1">
+											<xs:annotation>
+												<xs:documentation>Полное наименование организации - уполномоченного представителя</xs:documentation>
+											</xs:annotation>
+											<xs:simpleType>
+												<xs:restriction base="xs:string">
+													<xs:minLength value="1"/>
+													<xs:maxLength value="1000"/>
+												</xs:restriction>
+											</xs:simpleType>											
+										</xs:element>
+										<xs:element name="ИННОргПред" type="ИННЮЛТип" minOccurs="1" maxOccurs="1">
+											<xs:annotation>
+												<xs:documentation>ИНН организации- уполномоченного представителя</xs:documentation>
+											</xs:annotation>
+										</xs:element>
+										<xs:element name="КППОргПред" type="КППТип" minOccurs="1" maxOccurs="1">
+											<xs:annotation>
+												<xs:documentation>КПП организации- уполномоченного представителя</xs:documentation>
+											</xs:annotation>
+										</xs:element>	
+									</xs:sequence>								
+								</xs:complexType>
+							</xs:element>												
+							<xs:element name="СвФЛ" minOccurs="1" maxOccurs="1">
+								<xs:annotation>
+									<xs:documentation>Сведения о физическом лице</xs:documentation>			
+								</xs:annotation>
+								<xs:complexType>
+									<xs:sequence>
+										<xs:element name="ФИО" type="ФИОТип" minOccurs="1" maxOccurs="1">
+											<xs:annotation>
+												<xs:documentation>Фамилия, имя, отчество (при наличии)</xs:documentation>
+											</xs:annotation>
+										</xs:element>
+										<xs:element name="ДатаРожд" type="ДатаТип" minOccurs="1" maxOccurs="1">
+											<xs:annotation>
+												<xs:documentation>Дата Рождения. Дата в формате ДД.ММ.ГГГГ </xs:documentation>
+											</xs:annotation>
+										</xs:element>
+										<xs:element name="ИННФЛ" type="ИННФЛТип" minOccurs="0" maxOccurs="1">
+											<xs:annotation>
+												<xs:documentation>ИНН</xs:documentation>
+											</xs:annotation>
+										</xs:element>
+										<xs:element name="УдЛичнФЛ" type="УдЛичнФЛТип" minOccurs="1" maxOccurs="1">
+										<xs:annotation>
+											<xs:documentation> Данные документа, удостоверяющего личность</xs:documentation>
+										</xs:annotation>
+										</xs:element>
+									</xs:sequence>								
+								</xs:complexType>
+							</xs:element>
+							<xs:element name="СвИИСФЛ" minOccurs="1" maxOccurs="1">
+								<xs:annotation>	
+								
+									<xs:appinfo>
+										<sch:pattern>
+											<sch:rule context="СвИИСФЛ">
+												<sch:assert test="((СтатИИС = 2  and СвИИСПредш) or (СтатИИС = 1 and not(СвИИСПредш)))">
+														Не выполнено условие присутствия элемента Документ/СвИИСФЛ/СвИИСПредш при значении элемента СтатИИС, равном "2".
+												</sch:assert>
+											</sch:rule>
+										</sch:pattern>
+									</xs:appinfo>		
+									
+									<xs:documentation>Сведения об ИИС ФЛ</xs:documentation>			
+								</xs:annotation>
+								<xs:complexType>
+									<xs:sequence>
+										<xs:element name="ДатаДог" type="ДатаТип" minOccurs="1" maxOccurs="1">
+											<xs:annotation>
+												<xs:documentation>Дата договора на ведение ИИС. Дата в формате ДД.ММ.ГГГГ</xs:documentation>
+											</xs:annotation>
+										</xs:element>
+										<xs:element name="НомДог" minOccurs="1" maxOccurs="1">
+											<xs:annotation>
+												<xs:documentation>Номер договора на ведение ИИС</xs:documentation>
+											</xs:annotation>
+											<xs:simpleType>
+												<xs:restriction base="xs:string">
+													<xs:minLength value="1"/>
+													<xs:maxLength value="20"/>
+												</xs:restriction>
+											</xs:simpleType>
+										</xs:element>	
+										<xs:element name="ДатаОткИИС" type="ДатаТип" minOccurs="1" maxOccurs="1">
+											<xs:annotation>
+												<xs:documentation>Дата открытия ИИС. Дата в формате ДД.ММ.ГГГГ</xs:documentation>
+											</xs:annotation>
+										</xs:element>					
+										<xs:element name="СтатИИС" minOccurs="1" maxOccurs="1">
+											<xs:annotation>
+												<xs:documentation>Статус ИИС. Принимает одно из значений: 1 – открыт первично, 2 – открыт с переводом</xs:documentation>
+											</xs:annotation>
+											<xs:simpleType>
+												<xs:restriction base="xs:string">
+													<xs:length value="1"/>
+													<xs:enumeration value="1"/>
+													<xs:enumeration value="2"/>
+												</xs:restriction>
+											</xs:simpleType>
+										</xs:element>						
+										<xs:element name="СумДСИИС" minOccurs="1" maxOccurs="1">
+											<xs:annotation>
+											
+												<xs:appinfo>
+													<sch:pattern>
+														<sch:rule context="СумДСИИС">
+															<sch:assert test="((НалТО = 1 and (ОборотВнебирж or ОборотФонд)) or (НалТО = 0))">
+																Не выполнено условие присутствия хотя бы одного из элементов Документ/СвИИСФЛ/СумДСИИС/ОборотВнебирж и/или Документ/СвИИСФЛ/СумДСИИС/ОборотФонд при значении элемента НалТО, равном "1".
+															</sch:assert>
+														</sch:rule>
+													</sch:pattern>											
+												</xs:appinfo>
+											
+												<xs:documentation>Сведения о сумме внесенных денежных средств на ИИС</xs:documentation>
+											</xs:annotation>
+											<xs:complexType>
+												<xs:sequence>
+													<xs:element name="Период" type="ПериодТип" minOccurs="1" maxOccurs="1">
+														<xs:annotation>
+															<xs:documentation>Налоговый период. Год в формате ГГГГ</xs:documentation>
+														</xs:annotation>
+													</xs:element>
+													<xs:element name="ОбщСумДСИИС" minOccurs="1" maxOccurs="unbounded">
+														<xs:annotation>
+															<xs:documentation>Общая сумма денежных средств, внесенных на ИИС в налоговом периоде</xs:documentation>
+														</xs:annotation>
+														<xs:complexType>
+															<xs:sequence>
+																<xs:element name="ДатаВнДС" type="ДатаТип" minOccurs="1" maxOccurs="1">
+																	<xs:annotation>
+																		<xs:documentation>Дата внесения денежных средств на ИИС. Дата в формате ДД.ММ.ГГГГ</xs:documentation>
+																	</xs:annotation>
+																</xs:element>																										
+																<xs:element name="СуммаДС" minOccurs="1" maxOccurs="1">
+																	<xs:annotation>
+																		<xs:documentation>Сумма денежных средств</xs:documentation>
+																	</xs:annotation>
+																	<xs:simpleType>
+																		<xs:restriction base="xs:double">
+																			<xs:minInclusive value="0.00"/>
+																			<xs:maxInclusive value="999999999999999.99"/>
+																		</xs:restriction>
+																	</xs:simpleType>
+																</xs:element>
+															</xs:sequence>												
+														</xs:complexType>
+													</xs:element>
+													<xs:element name="НалТО" minOccurs="1" maxOccurs="1">
+														<xs:annotation>
+															<xs:documentation>Наличие торговых операций в налоговом периоде. 0 - нет, 1 - да.</xs:documentation>										
+														</xs:annotation>
+														<xs:simpleType>
+															<xs:restriction base="xs:string">
+																<xs:length value="1"/>
+																<xs:enumeration value="0"/>
+																<xs:enumeration value="1"/>
+															</xs:restriction>
+														</xs:simpleType>
+													</xs:element>										
+													<xs:element name="ОборотФонд" minOccurs="0" maxOccurs="1">
+														<xs:annotation>
+															<xs:documentation>Оборот по биржевым торговым операциям (сделкам) на фондовом рынке по приобретению и продаже активов, включая накопленный купонный доход (уплаченный/полученный), в рублях</xs:documentation>
+														</xs:annotation>
+														<xs:simpleType>
+															<xs:restriction base="xs:double">
+																<xs:minInclusive value="0.00"/>
+																<xs:maxInclusive value="9999999999999999999999999.99"/>
+															</xs:restriction>
+														</xs:simpleType>
+													</xs:element>
+													<xs:element name="ОборотВнебирж" minOccurs="0" maxOccurs="1">
+														<xs:annotation>
+															<xs:documentation>Оборот по торговым операциям (сделкам) на внебиржевом рынке по приобретению и продаже активов, включая накопленный купонный доход (уплаченный/полученный), в рублях</xs:documentation>
+														</xs:annotation>
+														<xs:simpleType>
+															<xs:restriction base="xs:double">
+																<xs:minInclusive value="0.00"/>
+																<xs:maxInclusive value="9999999999999999999999999.99"/>
+															</xs:restriction>
+														</xs:simpleType>
+													</xs:element>													
+												</xs:sequence>
+											</xs:complexType>
+										</xs:element>							
+										<xs:element name="СвИИСПредш" minOccurs="0" maxOccurs="1">
+											<xs:annotation>
+												<xs:documentation>Сведения по ИИС, заключенному с предшественником</xs:documentation>			
+											</xs:annotation>
+											<xs:complexType>
+												<xs:sequence>
+													<xs:element name="НаимПрофУчПред" minOccurs="1" maxOccurs="1">
+														<xs:annotation>
+															<xs:documentation>Полное наименование профессионального участника рынка ценных бумаг – предшественника, с которым ФЛ был заключен договор на ведение ИИС</xs:documentation>
+														</xs:annotation>
+														<xs:simpleType>
+															<xs:restriction base="xs:string">
+																<xs:minLength value="1"/>
+																<xs:maxLength value="1000"/>
+															</xs:restriction>
+														</xs:simpleType>
+													</xs:element>	
+													<xs:element name="ИННПрофУчПред" type="ИННЮЛТип" minOccurs="1" maxOccurs="1">
+														<xs:annotation>
+															<xs:documentation>ИНН профессионального участника рынка ценных бумаг-предшественника, с которым ФЛ был заключен договор на ведение ИИС</xs:documentation>
+														</xs:annotation>
+													</xs:element>
+													<xs:element name="ДатаДогПред" type="ДатаТип" minOccurs="1" maxOccurs="1">
+														<xs:annotation>
+															<xs:documentation>Дата договора на ведение ИИС, заключенного с предшественником. Дата в формате ДД.ММ.ГГГГ</xs:documentation>
+														</xs:annotation>
+													</xs:element>
+													<xs:element name="НомДогПред" minOccurs="1" maxOccurs="1">
+														<xs:annotation>
+															<xs:documentation>Номер договора на ведение ИИС, заключенного с предшественником</xs:documentation>
+														</xs:annotation>
+														<xs:simpleType>
+															<xs:restriction base="xs:string">
+																<xs:minLength value="1"/>
+																<xs:maxLength value="20"/>
+															</xs:restriction>
+														</xs:simpleType>
+													</xs:element>	
+													<xs:element name="ДатаДогПерв" type="ДатаТип" minOccurs="1" maxOccurs="1">
+														<xs:annotation>
+															<xs:documentation>Дата договора на ведение ИИС профессионального участника рынка ценных бумаг, заключившего первоначальный договор о ведении индивидуального инвестиционного счета с ФЛ. Дата в формате ДД.ММ.ГГГГ</xs:documentation>
+														</xs:annotation>
+													</xs:element>
+												</xs:sequence>
+											</xs:complexType>
+										</xs:element>																			
+									</xs:sequence>
+								</xs:complexType>
+							</xs:element>	
+							<xs:element name="СвБанкСчетФЛ" minOccurs="0" maxOccurs="1">
+								<xs:annotation>
+									<xs:documentation>Сведения о банковском счете ФЛ для перечисления денежных средств</xs:documentation>			
+								</xs:annotation>
+								<xs:complexType>
+									<xs:sequence>
+										<xs:element name="НаимБанк" minOccurs="1" maxOccurs="1">
+											<xs:annotation>
+												<xs:documentation>Наименование банка</xs:documentation>
+											</xs:annotation>
+											<xs:simpleType>
+												<xs:restriction base="xs:string">
+													<xs:minLength value="1"/>
+													<xs:maxLength value="1000"/>
+												</xs:restriction>
+											</xs:simpleType>
+										</xs:element>
+										<xs:element name="КорСчет" type="КорСчТип" minOccurs="1" maxOccurs="1">
+											<xs:annotation>
+												<xs:documentation>Корреспондентский счет</xs:documentation>
+											</xs:annotation>
+										</xs:element>
+										<xs:element name="БИК" type="БИКТип" minOccurs="1" maxOccurs="1">
+											<xs:annotation>
+												<xs:documentation>БИК</xs:documentation>
+											</xs:annotation>
+										</xs:element>
+										<xs:element name="НомерСч" type="СчТип" minOccurs="1" maxOccurs="1">
+											<xs:annotation>
+												<xs:documentation>Номер банковского счета</xs:documentation>
+											</xs:annotation>
+										</xs:element>							
+									</xs:sequence>
+								</xs:complexType>
+							</xs:element>	
+						</xs:sequence>
+					</xs:complexType>
+				</xs:element>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+	
+	<xs:simpleType name="ДатаТип">
+		<xs:annotation>
+			<xs:documentation>Дата в формате ДД.ММ.ГГГГ (01.01.1800 - 31.12.2099)</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:string">
+			<xs:length value="10"/>
+			<xs:pattern value="(((0[1-9]{1}|[1-2]{1}[0-9]{1})\.(0[1-9]{1}|1[0-2]{1}))|((30)\.(01|0[3-9]{1}|1[0-2]{1}))|((31)\.(01|03|05|07|08|10|12)))\.(18[0-9]{2}|19[0-9]{2}|20[0-9]{2})"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="ВремяТип">
+		<xs:annotation>
+			<xs:documentation>Время в формате ЧЧ:ММ:СС</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:string">
+			<xs:length value="8"/>
+			<xs:pattern value="([0-1]{1}[0-9]{1}|2[0-3]{1}):([0-5]{1}[0-9]{1}):([0-5]{1}[0-9]{1})"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="ИННЮЛТип">
+		<xs:annotation>
+			<xs:documentation>Идентификационный номер налогоплательщика - организации</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:string">
+			<xs:length value="10"/>
+			<xs:pattern value="([0-9]{1}[1-9]{1}|[1-9]{1}[0-9]{1})[0-9]{8}"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="КППТип">
+		<xs:annotation>
+			<xs:documentation>Код причины постановки на учет (КПП) </xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:string">
+			<xs:length value="9"/>
+			<xs:pattern value="([0-9]{1}[1-9]{1}|[1-9]{1}[0-9]{1})([0-9]{2})([0-9A-F]{2})([0-9]{3})"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:complexType name="ФИОТип">
+		<xs:annotation>
+			<xs:documentation>Фамилия, имя, отчество</xs:documentation>
+		</xs:annotation>
+		<xs:attribute name="Фамилия" use="required">
+			<xs:annotation>
+				<xs:documentation>Фамилия</xs:documentation>
+			</xs:annotation>
+			<xs:simpleType>
+				<xs:restriction base="xs:string">
+					<xs:minLength value="1"/>
+					<xs:maxLength value="60"/>
+				</xs:restriction>
+			</xs:simpleType>
+		</xs:attribute>
+		<xs:attribute name="Имя" use="required">
+			<xs:annotation>
+				<xs:documentation>Имя</xs:documentation>
+			</xs:annotation>
+			<xs:simpleType>
+				<xs:restriction base="xs:string">
+					<xs:minLength value="1"/>
+					<xs:maxLength value="60"/>
+				</xs:restriction>
+			</xs:simpleType>
+		</xs:attribute>
+		<xs:attribute name="Отчество" use="optional">
+			<xs:annotation>
+				<xs:documentation>Отчество</xs:documentation>
+			</xs:annotation>
+			<xs:simpleType>
+				<xs:restriction base="xs:string">
+					<xs:minLength value="1"/>
+					<xs:maxLength value="60"/>
+				</xs:restriction>
+			</xs:simpleType>
+		</xs:attribute>
+	</xs:complexType>
+	<xs:simpleType name="ИННФЛТип">
+		<xs:annotation>
+			<xs:documentation>Идентификационный номер налогоплательщика - физического лица</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:string">
+			<xs:length value="12"/>
+			<xs:pattern value="([0-9]{1}[1-9]{1}|[1-9]{1}[0-9]{1})[0-9]{10}"/>
+		</xs:restriction>
+	</xs:simpleType>			
+	<xs:complexType name="УдЛичнФЛТип">
+		<xs:annotation>
+			<xs:documentation>Данные документа, удостоверяющего личность</xs:documentation>
+		</xs:annotation>
+		<xs:attribute name="КодВидДок" type="СПДУЛТип" use="required">
+			<xs:annotation>
+				<xs:documentation>Код вида документа</xs:documentation>
+			</xs:annotation>
+		</xs:attribute>
+		<xs:attribute name="СерНомДок" use="required">
+			<xs:annotation>
+				<xs:documentation>Серия и номер</xs:documentation>
+			</xs:annotation>
+			<xs:simpleType>
+				<xs:restriction base="xs:string">
+					<xs:minLength value="1"/>
+					<xs:maxLength value="25"/>
+				</xs:restriction>
+			</xs:simpleType>
+		</xs:attribute>
+	</xs:complexType>						
+	<xs:simpleType name="СПДУЛТип">
+		<xs:annotation>
+			<xs:documentation>Коды Справочника видов документов, удостоверяющих личность налогоплательщика</xs:documentation>
+			<xs:documentation>Содержит только цифры</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:string">
+			<xs:length value="2"/>
+			<xs:pattern value="\d{2}"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="ПериодТип">
+		<xs:annotation>
+			<xs:documentation>Год. Год в формате ГГГГ </xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:string">
+			<xs:length value="4"/>
+			<xs:pattern value="(20[0-9]{2})"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="КорСчТип">
+		<xs:annotation>
+			<xs:documentation>Корреспондентский счет</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:string">
+			<xs:length value="20"/>
+		</xs:restriction>
+	</xs:simpleType>						
+	<xs:simpleType name="БИКТип">
+		<xs:annotation>
+			<xs:documentation>БИК</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:string">
+			<xs:length value="9"/>
+		</xs:restriction>
+	</xs:simpleType>			
+	<xs:simpleType name="СчТип">
+		<xs:annotation>
+			<xs:documentation>Номер банковского счета</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:string">
+			<xs:length value="20"/>
+		</xs:restriction>
+	</xs:simpleType>				
+</xs:schema>	

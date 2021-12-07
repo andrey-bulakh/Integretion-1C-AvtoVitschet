@@ -1,0 +1,202 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<Form xmlns="http://v8.1c.ru/8.3/xcf/logform" xmlns:app="http://v8.1c.ru/8.2/managed-application/core" xmlns:cfg="http://v8.1c.ru/8.1/data/enterprise/current-config" xmlns:dcscor="http://v8.1c.ru/8.1/data-composition-system/core" xmlns:dcsset="http://v8.1c.ru/8.1/data-composition-system/settings" xmlns:ent="http://v8.1c.ru/8.1/data/enterprise" xmlns:lf="http://v8.1c.ru/8.2/managed-application/logform" xmlns:style="http://v8.1c.ru/8.1/data/ui/style" xmlns:sys="http://v8.1c.ru/8.1/data/ui/fonts/system" xmlns:v8="http://v8.1c.ru/8.1/data/core" xmlns:v8ui="http://v8.1c.ru/8.1/data/ui" xmlns:web="http://v8.1c.ru/8.1/data/ui/colors/web" xmlns:win="http://v8.1c.ru/8.1/data/ui/colors/windows" xmlns:xr="http://v8.1c.ru/8.3/xcf/readable" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" version="2.13">
+	<AutoCommandBar name="ФормаКоманднаяПанель" id="-1"/>
+	<Events>
+		<Event name="OnOpen">ПриОткрытии</Event>
+	</Events>
+	<ChildItems>
+		<CheckBoxField name="Отладка" id="5">
+			<DataPath>Отладка</DataPath>
+			<CheckBoxType>Auto</CheckBoxType>
+			<ContextMenu name="ОтладкаКонтекстноеМеню" id="6"/>
+			<ExtendedTooltip name="ОтладкаРасширеннаяПодсказка" id="7"/>
+		</CheckBoxField>
+		<InputField name="НомерЗП" id="8">
+			<DataPath>НомерЗП</DataPath>
+			<MinValue xsi:type="xs:decimal">1</MinValue>
+			<ContextMenu name="НомерЗПКонтекстноеМеню" id="9"/>
+			<ExtendedTooltip name="НомерЗПРасширеннаяПодсказка" id="10"/>
+		</InputField>
+		<CheckBoxField name="СместитьВремя" id="17">
+			<DataPath>СместитьВремя</DataPath>
+			<CheckBoxType>Auto</CheckBoxType>
+			<ContextMenu name="СместитьВремяКонтекстноеМеню" id="18"/>
+			<ExtendedTooltip name="СместитьВремяРасширеннаяПодсказка" id="19"/>
+		</CheckBoxField>
+		<InputField name="requestId" id="20">
+			<DataPath>requestId</DataPath>
+			<ContextMenu name="requestIdКонтекстноеМеню" id="21"/>
+			<ExtendedTooltip name="requestIdРасширеннаяПодсказка" id="22"/>
+		</InputField>
+		<Button name="ФормаАвторизацияНА" id="1">
+			<Type>UsualButton</Type>
+			<CommandName>Form.Command.АвторизацияНА</CommandName>
+			<ExtendedTooltip name="ФормаАвторизацияНАРасширеннаяПодсказка" id="2"/>
+		</Button>
+		<Button name="РегистрацияНАвППВычеты" id="3">
+			<Type>UsualButton</Type>
+			<CommandName>Form.Command.РегистрацияНАвППВычеты</CommandName>
+			<ExtendedTooltip name="РегистрацияНАвППВычетыРасширеннаяПодсказка" id="4"/>
+		</Button>
+		<Button name="ЗапросНаПередачуНалоговогоВычетаИнвестицииТипА" id="11">
+			<Type>UsualButton</Type>
+			<CommandName>Form.Command.ЗапросНаПередачуНалоговогоВычетаИнвестицииТипА</CommandName>
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Запрос на инвестиционный налоговой вычет тип А</v8:content>
+				</v8:item>
+			</Title>
+			<ExtendedTooltip name="ЗапросНаПередачуНалоговогоВычетаИнвестицииТипАРасширеннаяПодсказка" id="12"/>
+		</Button>
+		<Button name="ЗапросНаПередачуНалоговогоВычетаИнвестицииТипБ" id="13">
+			<Type>UsualButton</Type>
+			<CommandName>Form.Command.ЗапросНаПередачуНалоговогоВычетаИнвестицииТипБ</CommandName>
+			<ExtendedTooltip name="ЗапросНаПередачуНалоговогоВычетаИнвестицииТипБРасширеннаяПодсказка" id="14"/>
+		</Button>
+		<Button name="ПолучениеСтатусаОбработкиЗапросаНаНалоговыйВычет" id="15">
+			<Type>UsualButton</Type>
+			<CommandName>Form.Command.ПолучениеСтатусаОбработкиЗапросаНаНалоговыйВычет</CommandName>
+			<ExtendedTooltip name="ПолучениеСтатусаОбработкиЗапросаНаНалоговыйВычетРасширеннаяПодсказка" id="16"/>
+		</Button>
+	</ChildItems>
+	<Attributes>
+		<Attribute name="Объект" id="1">
+			<Type>
+				<v8:Type>cfg:ExternalDataProcessorObject.Integration_1C_AvtoVitschet</v8:Type>
+			</Type>
+			<MainAttribute>true</MainAttribute>
+		</Attribute>
+		<Attribute name="Отладка" id="2">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Отладка</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:boolean</v8:Type>
+			</Type>
+		</Attribute>
+		<Attribute name="НомерЗП" id="3">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Номер ЗП</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:decimal</v8:Type>
+				<v8:NumberQualifiers>
+					<v8:Digits>10</v8:Digits>
+					<v8:FractionDigits>0</v8:FractionDigits>
+					<v8:AllowedSign>Any</v8:AllowedSign>
+				</v8:NumberQualifiers>
+			</Type>
+		</Attribute>
+		<Attribute name="СместитьВремя" id="4">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Сместить время</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:boolean</v8:Type>
+			</Type>
+		</Attribute>
+		<Attribute name="requestId" id="5">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Request id</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:string</v8:Type>
+				<v8:StringQualifiers>
+					<v8:Length>0</v8:Length>
+					<v8:AllowedLength>Variable</v8:AllowedLength>
+				</v8:StringQualifiers>
+			</Type>
+		</Attribute>
+	</Attributes>
+	<Commands>
+		<Command name="АвторизацияНА" id="1">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Авторизация НА</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Авторизация НА</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Action>АвторизацияНА</Action>
+		</Command>
+		<Command name="РегистрацияНАвППВычеты" id="2">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Регистрация НА в ПП Вычеты</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Регистрация н ав ППВычеты</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Action>РегистрацияНАвППВычеты</Action>
+		</Command>
+		<Command name="ЗапросНаПередачуНалоговогоВычетаИнвестицииТипА" id="3">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Запрос на передачу налогового вычета инвестиции тип А</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Запрос на передачу налогового вычета инвестиции тип А</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Action>ЗапросНаПередачуНалоговогоВычетаИнвестицииТипА</Action>
+		</Command>
+		<Command name="ЗапросНаПередачуНалоговогоВычетаИнвестицииТипБ" id="4">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Запрос на инвестиционный налоговой вычет тип Б
+</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Запрос на передачу налогового вычета инвестиции тип Б</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Action>ЗапросНаПередачуНалоговогоВычетаИнвестицииТипБ</Action>
+		</Command>
+		<Command name="ПолучениеСтатусаОбработкиЗапросаНаНалоговыйВычет" id="5">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Получение статуса обработки запроса на налоговый вычет</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Получение статуса обработки запроса на налоговый вычет</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Action>ПолучениеСтатусаОбработкиЗапросаНаНалоговыйВычет</Action>
+		</Command>
+	</Commands>
+</Form>
